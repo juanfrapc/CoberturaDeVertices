@@ -31,10 +31,13 @@ public class Arista {
         }
         final Arista other = (Arista) obj;
         return this.id == other.id;
+    } 
+
+    
+    @Override
+    public Arista clone() throws CloneNotSupportedException {
+        return (Arista) super.clone(); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    
-    
     
     
 }
