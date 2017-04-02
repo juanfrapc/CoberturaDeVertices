@@ -5,14 +5,14 @@ public class ConjuntoNodos {
     private final Nodo[] nodos;
     private int k = 0;
 
-    public ConjuntoNodos(int n) {
+    ConjuntoNodos(int n) {
         this.nodos = new Nodo[n];
         for (int i = 0; i < n; i++) {
             this.añade(new Nodo());
         }
     }
 
-    public final boolean añade(Nodo nodo) {
+    final boolean añade(Nodo nodo) {
         if (k < nodos.length) {
             nodos[k++] = nodo;
             return true;

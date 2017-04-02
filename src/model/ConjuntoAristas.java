@@ -7,11 +7,11 @@ public final class ConjuntoAristas implements Iterable<Arista> {
     private final Arista[] aristas;
     private int k = 0;
 
-    public ConjuntoAristas(int n) {
+    ConjuntoAristas(int n) {
         this.aristas = new Arista[n];
     }
 
-    public ConjuntoAristas(int[][] mat, ConjuntoNodos nodos) {
+    ConjuntoAristas(int[][] mat, ConjuntoNodos nodos) {
         this(mat.length*mat.length);
         for (int i = 0; i < mat.length; i++) {
             for (int j = 0; j < mat[i].length; j++) {

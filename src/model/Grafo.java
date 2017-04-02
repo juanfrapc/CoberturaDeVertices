@@ -11,11 +11,6 @@ public class Grafo {
         this.aristas = new ConjuntoAristas(tamaño * tamaño);
         this.nodos = new ConjuntoNodos(tamaño);
     }
-
-    public Grafo(ConjuntoAristas aristas, ConjuntoNodos nodos) {
-        this.aristas = aristas;
-        this.nodos = nodos;
-    }
     
     public Grafo(int[][] mat){
         this.nodos = new ConjuntoNodos(mat.length);

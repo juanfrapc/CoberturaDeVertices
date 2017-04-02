@@ -35,8 +35,6 @@ public class Nodo {
         return this.id == other.id;
     }
     
-    
-    
     @Override
     public Nodo clone() throws CloneNotSupportedException {
         return (Nodo) super.clone(); //To change body of generated methods, choose Tools | Templates.
