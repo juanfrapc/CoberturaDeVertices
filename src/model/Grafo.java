@@ -16,6 +16,11 @@ public class Grafo {
         this.aristas = aristas;
         this.nodos = nodos;
     }
+    
+    public Grafo(int[][] mat){
+        this.nodos = new ConjuntoNodos(mat.length);
+        this.aristas=new ConjuntoAristas(mat, nodos);
+    }
 
     public boolean añadeArista(Arista a) {
         if (this.aristas.añade(a)) {

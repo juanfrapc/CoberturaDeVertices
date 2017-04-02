@@ -11,6 +11,10 @@ public class Nodo {
         this.id = idGenerator++;
     }
     
+    Nodo(int id){
+        this.id=id;
+    }
+    
     public int getGrado() {
         return grado;
     }
