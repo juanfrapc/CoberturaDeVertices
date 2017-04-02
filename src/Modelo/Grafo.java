@@ -1,4 +1,4 @@
-package model;
+package Modelo;
 
 import java.util.Iterator;
 
@@ -53,4 +53,8 @@ public class Grafo {
         return false;
     }
 
+    public Iterator<Arista> iteradorAristas(){
+        return aristas.iterator();
+    }
+    
 }

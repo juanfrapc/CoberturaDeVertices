@@ -1,4 +1,4 @@
-package model;
+package Modelo;
 
 public class Nodo {
     
@@ -38,6 +38,11 @@ public class Nodo {
     @Override
     public Nodo clone() throws CloneNotSupportedException {
         return (Nodo) super.clone(); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String toString() {
+        return "Nodo{" + "id=" + id + '}';
     }
     
 }

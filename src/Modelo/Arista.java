@@ -1,4 +1,4 @@
-package model;
+package Modelo;
 
 public class Arista {
     
@@ -36,6 +36,11 @@ public class Arista {
     @Override
     public Arista clone() throws CloneNotSupportedException {
         return (Arista) super.clone(); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String toString() {
+        return "Arista{" + "origen=" + origen + "\t destino=" + destino + '}';
     }
     
     

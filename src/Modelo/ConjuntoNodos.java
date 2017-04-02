@@ -1,4 +1,4 @@
-package model;
+package Modelo;
 
 public class ConjuntoNodos {
 
