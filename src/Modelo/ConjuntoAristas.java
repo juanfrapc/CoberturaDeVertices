@@ -2,7 +2,7 @@ package Modelo;
 
 import java.util.Iterator;
 
-public final class ConjuntoAristas implements Iterable<Arista> {
+public final class ConjuntoAristas implements Iterable<Arista>, Cloneable{
 
     private final Arista[] aristas;
     private int k = 0;
@@ -15,7 +15,7 @@ public final class ConjuntoAristas implements Iterable<Arista> {
         this(mat.length*mat.length);
         for (int i = 0; i < mat.length; i++) {
             for (int j = 0; j < mat[i].length; j++) {
-                if (mat[i][j]==1) {
+                if (mat[i][j]>0) {
                     this.añade(new Arista(nodos.getNodo(i), nodos.getNodo(j)));
                 }
             }

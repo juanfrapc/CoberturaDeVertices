@@ -5,22 +5,24 @@ public class ConjuntoNodos {
     private final Nodo[] nodos;
     private int k = 0;
 
-    ConjuntoNodos(int n) {
+    public ConjuntoNodos(int n, boolean vacio) {
         this.nodos = new Nodo[n];
-        for (int i = 0; i < n; i++) {
-            this.añade(new Nodo());
+        if (!vacio) {
+            for (int i = 0; i < n; i++) {
+                this.añade(new Nodo());
+            }
         }
     }
 
-    final boolean añade(Nodo nodo) {
+    public final boolean añade(Nodo nodo) {
         if (k < nodos.length) {
             nodos[k++] = nodo;
             return true;
         }
         return false;
     }
-    
-    public Nodo getNodo(int id){
+
+    public Nodo getNodo(int id) {
         for (Nodo nodo : nodos) {
             if (nodo.equals(new Nodo(id))) {
                 return nodo;
@@ -28,34 +30,34 @@ public class ConjuntoNodos {
         }
         return null;
     }
-    
-    public int nNodos(){
+
+    public int nNodos() {
         return k;
     }
 
-    public boolean eliminar(Nodo nodo){
+    public boolean eliminar(Nodo nodo) {
         int i;
-        boolean flag=false;
+        boolean flag = false;
         for (i = 0; i < k; i++) {
-            if(nodos[i].equals(nodo)){
+            if (nodos[i].equals(nodo)) {
                 k--;
-                flag=true;
+                flag = true;
                 break;
             }
         }
         for (int j = i; j < k; j++) {
-            nodos[j]=nodos[j+1];
+            nodos[j] = nodos[j + 1];
         }
         return flag;
     }
-    
+
     @Override
     public ConjuntoNodos clone() throws CloneNotSupportedException {
-        ConjuntoNodos res = new ConjuntoNodos(this.nNodos());
+        ConjuntoNodos res = new ConjuntoNodos(this.nNodos(),false);
         for (Nodo Nodo : nodos) {
             res.añade(Nodo.clone());
         }
         return res;
     }
-    
+
 }

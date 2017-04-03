@@ -10,17 +10,14 @@ import java.io.File;
 public class FileGrafoReader implements GrafoReader {
 
     private String path = "";
-    private final int tipo;
 
     /**
      * Constructor con la ruta del fichero
      *
      * @param path Ruta del fichero
-     * @param tipo Tpo de grafo 0:ordenado, 1:Multietapa
      */
-    public FileGrafoReader(String path, int tipo) {
+    public FileGrafoReader(String path) {
         this.path = path;
-        this.tipo = tipo;
     }
 
     @Override

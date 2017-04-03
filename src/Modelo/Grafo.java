@@ -9,11 +9,11 @@ public class Grafo {
 
     public Grafo(int tamaño) {
         this.aristas = new ConjuntoAristas(tamaño * tamaño);
-        this.nodos = new ConjuntoNodos(tamaño);
+        this.nodos = new ConjuntoNodos(tamaño, true);
     }
     
     public Grafo(int[][] mat){
-        this.nodos = new ConjuntoNodos(mat.length);
+        this.nodos = new ConjuntoNodos(mat.length, false);
         this.aristas=new ConjuntoAristas(mat, nodos);
     }
 
@@ -53,8 +53,22 @@ public class Grafo {
         return false;
     }
 
+    public int[] dimensiones(){
+        return new int[] {this.nodos.nNodos(), this.aristas.nAristas()};
+    }
+    
     public Iterator<Arista> iteradorAristas(){
         return aristas.iterator();
     }
+
+    public ConjuntoAristas cloneAristas() throws CloneNotSupportedException {
+        return aristas.clone();
+    }
+
+    public ConjuntoNodos getNodos() {
+        return nodos;
+    }
+    
+    
     
 }
