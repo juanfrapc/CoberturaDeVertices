@@ -16,7 +16,7 @@ public final class ConjuntoAristas implements Iterable<Arista>, Cloneable{
         for (int i = 0; i < mat.length; i++) {
             for (int j = 0; j < mat[i].length; j++) {
                 if (mat[i][j]>0) {
-                    this.añade(new Arista(nodos.getNodo(i), nodos.getNodo(j)));
+                    this.añade(new Arista(nodos.getNodo(i+1), nodos.getNodo(j+1)));
                 }
             }
         }
@@ -51,11 +51,12 @@ public final class ConjuntoAristas implements Iterable<Arista>, Cloneable{
     }
 
     @Override
-    public ConjuntoAristas clone() throws CloneNotSupportedException {
+    public ConjuntoAristas clone() throws CloneNotSupportedException  {
         ConjuntoAristas res = new ConjuntoAristas(this.nAristas());
-        for (Arista arista : aristas) {
-            res.añade(arista.clone());
+        for (int i = 0; i < k; i++) {            
+            res.añade(aristas[i].clone());
         }
+        System.out.print("");
         return res;
     }
 

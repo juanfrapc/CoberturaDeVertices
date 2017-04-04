@@ -44,7 +44,7 @@ public class Pruebas {
                         sol = resolverGrafo(grafo);
                         printer.print(sol);
                     } catch (Exception ex) {
-                        System.err.println("\n" + ex.getMessage() + "\n");
+                        System.out.println("\n" + ex.getMessage() + "\n");
                     }
                     break;
                 case "2": // Matriz por pantalla
@@ -64,7 +64,7 @@ public class Pruebas {
                         sol = resolverGrafo(grafo);
                         printer.print(sol);
                     } catch (Exception ex) {
-                        System.err.println("\n" + ex.getMessage() + "\n");
+                        System.out.println("\n" + ex.getMessage() + "\n");
                     }
 
                     break;
@@ -79,26 +79,26 @@ public class Pruebas {
                         comprueba(grafo, sol, solEsperada);
                     } catch (Exception ex) {
                         System.out.println("Fallo: excepción no esperada");
-                        System.err.println(ex.getMessage() + "\n");
+                        System.out.println(ex.getClass()+ "\n");
                     }
 
-                    System.out.print("-Prueba 2 - ");
-                    path = "EjemploGrafo2.txt";
-                    grafo = cargarGrafo(path);
-                    try {
-                        sol = resolverGrafo(grafo);
-                        comprueba(grafo, sol, solEsperada);
-                    } catch (Exception ex) {
-                        System.out.println("Fallo: excepción no esperada");
-                        System.err.println(ex.getMessage() + "\n");
-                    }
+//                    System.out.print("-Prueba 2 - ");
+//                    path = "EjemploGrafo2.txt";
+//                    grafo = cargarGrafo(path);
+//                    try {
+//                        sol = resolverGrafo(grafo);
+//                        comprueba(grafo, sol, solEsperada);
+//                    } catch (Exception ex) {
+//                        System.out.println("Fallo: excepción no esperada");
+//                        System.out.println(ex.getMessage() + "\n");
+//                    }
                     break;
                 case "q":
                     return;
                 case "Q":
                     return;
                 default:
-                    System.err.println("\nError: Comando erróneo\n");
+                    System.out.println("\nError: Comando erróneo\n");
             }
         }
     }
@@ -109,7 +109,7 @@ public class Pruebas {
         try {
             grafo = reader.read();
         } catch (Exception ex) {
-            System.err.println("\n" + ex.getMessage() + "\n");
+            System.out.println("\n" + ex.getMessage() + "\n");
         }
         return grafo;
     }
@@ -120,7 +120,7 @@ public class Pruebas {
         try {
             nodos = reader.getConjuntoNodos();
         } catch (Exception ex) {
-            System.err.println("\n" + ex.getMessage() + "\n");
+            System.out.println("\n" + ex.getMessage() + "\n");
         }
         return nodos;
     }
@@ -142,7 +142,7 @@ public class Pruebas {
                 System.out.println("Fallo: la solución obtenida no es un conjunto cobertura");
             }
         }
-        System.out.println("Éxito");
+        System.out.println("Éxito\n");
     }
 
 }

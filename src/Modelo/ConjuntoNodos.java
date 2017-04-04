@@ -1,6 +1,5 @@
 package Modelo;
 
-import java.util.Arrays;
 import java.util.Iterator;
 
 public class ConjuntoNodos implements Iterable<Nodo>{
@@ -83,12 +82,6 @@ public class ConjuntoNodos implements Iterable<Nodo>{
                 eliminar(nodos[--i]);
             }
         };
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        return hash;
     }
 
     @Override
