@@ -1,6 +1,9 @@
 package Modelo;
 
-public class ConjuntoNodos {
+import java.util.Arrays;
+import java.util.Iterator;
+
+public class ConjuntoNodos implements Iterable<Nodo>{
 
     private final Nodo[] nodos;
     private int k = 0;
@@ -60,4 +63,67 @@ public class ConjuntoNodos {
         return res;
     }
 
+    @Override
+    public Iterator<Nodo> iterator() {
+        return new Iterator<Nodo>() {
+            private int i = 0;
+
+            @Override
+            public boolean hasNext() {
+                return i < k;
+            }
+
+            @Override
+            public Nodo next() {
+                return nodos[i++];
+            }
+
+            @Override
+            public void remove() {
+                eliminar(nodos[--i]);
+            }
+        };
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (! (obj instanceof ConjuntoNodos)) {
+            return false;
+        }
+        final ConjuntoNodos other = (ConjuntoNodos) obj;
+        if (this.k != other.k) {
+            return false;
+        }
+        for (Nodo nodo : this) {
+            boolean flag = false;
+            for (Nodo nodito : other) {
+                if (nodo.equals(nodito)) {
+                    flag = true;
+                    break;
+                }
+            }
+            if (!flag){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean contiene(Nodo nodo) {
+        for (Nodo nodito : nodos) {
+            if (nodito.equals(nodo)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    
+    
 }

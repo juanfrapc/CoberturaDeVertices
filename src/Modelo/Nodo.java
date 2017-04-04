@@ -11,7 +11,7 @@ public class Nodo {
         this.id = idGenerator++;
     }
     
-    Nodo(int id){
+    public Nodo(int id){
         this.id=id;
     }
     

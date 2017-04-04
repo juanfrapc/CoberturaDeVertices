@@ -7,7 +7,7 @@ public final class ConjuntoAristas implements Iterable<Arista>, Cloneable{
     private final Arista[] aristas;
     private int k = 0;
 
-    ConjuntoAristas(int n) {
+    public ConjuntoAristas(int n) {
         this.aristas = new Arista[n];
     }
 
@@ -82,4 +82,22 @@ public final class ConjuntoAristas implements Iterable<Arista>, Cloneable{
         };
     }
 
+    public boolean esVacio() {
+        return k==0;
+    }
+
+    public Arista getRandom() {
+        int i = (int) Math.round((k+1)*Math.random() - 0.5);
+        return aristas[i];
+    }
+
+    public boolean contiene(Arista arista) {
+        for (Arista aristita : aristas) {
+            if (aristita.equals(arista)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
 }

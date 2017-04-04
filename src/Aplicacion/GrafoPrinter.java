@@ -1,7 +1,9 @@
 package Aplicacion;
 
 import Modelo.Arista;
+import Modelo.ConjuntoNodos;
 import Modelo.Grafo;
+import Modelo.Nodo;
 import Vista.GrafoDisplay;
 import java.util.Iterator;
 
@@ -38,6 +40,12 @@ public class GrafoPrinter implements GrafoDisplay {
             System.out.println(a.toString());
         }
 
+    }
+    
+    public void print(ConjuntoNodos conjunto){
+        for (Nodo nodo : conjunto) {
+            System.out.print(nodo + "\t");
+        }
     }
 
 }
