@@ -6,6 +6,8 @@ import Modelo.ConjuntoNodos;
 import Modelo.Grafo;
 import java.util.Iterator;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Pruebas {
 
@@ -73,13 +75,16 @@ public class Pruebas {
                     System.out.print("-Prueba 1 - ");
                     path = "EjemploGrafo.txt";
                     grafo = cargarGrafo(path);
-                    int solEsperada = 100;
+                    printer.print(grafo);
+                    int solEsperada = 3;
                     try {
                         sol = resolverGrafo(grafo);
+                        printer.print(sol);
                         comprueba(grafo, sol, solEsperada);
                     } catch (Exception ex) {
                         System.out.println("Fallo: excepción no esperada");
-                        System.out.println(ex.getClass()+ "\n");
+                        System.out.println(ex.getClass() + "\n");
+                        Logger.getLogger(Pruebas.class.getName()).log(Level.SEVERE, null, ex);
                     }
 
 //                    System.out.print("-Prueba 2 - ");
@@ -114,17 +119,6 @@ public class Pruebas {
         return grafo;
     }
 
-    private static ConjuntoNodos cargarConjuntoNodos(String path) {
-        FileGrafoReader reader = new FileGrafoReader(path);
-        ConjuntoNodos nodos = null;
-        try {
-            nodos = reader.getConjuntoNodos();
-        } catch (Exception ex) {
-            System.out.println("\n" + ex.getMessage() + "\n");
-        }
-        return nodos;
-    }
-
     private static ConjuntoNodos resolverGrafo(Grafo grafo) throws Exception {
         AproximacionCoberturaVertices resol = new AproximacionCoberturaVertices();
         ConjuntoNodos sol = resol.resuelve(grafo);
@@ -133,16 +127,18 @@ public class Pruebas {
 
     private static void comprueba(Grafo grafo, ConjuntoNodos sol, int optimo) {
         if (sol.nNodos() > 2 * optimo) {
-            System.out.println("Fallo: la solución obtenida no se aproxima lo suficiente al óptimo");
+            System.out.println("\nFallo: la solución obtenida no se aproxima lo suficiente al óptimo\n");
+            return;
         }
         Iterator<Arista> it = grafo.iteradorAristas();
         while (it.hasNext()) {
             Arista arista = it.next();
             if (!sol.contiene(arista.getOrigen()) && !sol.contiene(arista.getDestino())) {
-                System.out.println("Fallo: la solución obtenida no es un conjunto cobertura");
+                System.out.println("\nFallo: la solución obtenida no es un conjunto cobertura\n");
+                return;
             }
         }
-        System.out.println("Éxito\n");
+        System.out.println("\nÉxito\n");
     }
 
 }

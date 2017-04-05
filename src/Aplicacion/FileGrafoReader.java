@@ -26,8 +26,8 @@ public class FileGrafoReader implements GrafoReader {
     public Grafo read() throws Exception {
 
         try {
-            BufferedReader reader
-                    = new BufferedReader(new FileReader(new File(path)));
+            BufferedReader reader;
+            reader = new BufferedReader(new FileReader(new File(path)));
 
             int nNodos = Integer.parseInt(reader.readLine().split("=")[1].trim());
             int[][] matriz = new int[nNodos][nNodos];// matriz destino
@@ -41,29 +41,8 @@ public class FileGrafoReader implements GrafoReader {
                 j = 0;
                 i++;
             }
-
+            reader.close();
             return new Grafo(matriz);
-        } catch (IOException ex) {
-            // Ruta no válida
-            throw new Exception("Fichero no válido", ex);
-        }
-    }
-
-    public ConjuntoNodos getConjuntoNodos() throws Exception {
-        try {
-            BufferedReader reader
-                    = new BufferedReader(new FileReader(new File(path)));
-            String fila = reader.readLine();
-            String[] celdas = fila.split("\\s+");
-            int[] ids = new int[celdas.length];
-            for (int i = 0; i < ids.length; i++) {
-                ids[i] = Integer.parseInt(celdas[i]);
-            }
-            ConjuntoNodos conjuntoNodos = new ConjuntoNodos(ids.length, true);
-            for (int id : ids) {
-                conjuntoNodos.añade(new Nodo(id));
-            }
-            return conjuntoNodos;
         } catch (IOException ex) {
             // Ruta no válida
             throw new Exception("Fichero no válido", ex);
