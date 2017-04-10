@@ -8,11 +8,13 @@ public class Grafo {
     private final ConjuntoNodos nodos;
 
     public Grafo(int tamaño) {
+        Nodo.restartIdGen();
         this.aristas = new ConjuntoAristas(tamaño * tamaño);
         this.nodos = new ConjuntoNodos(tamaño, true);
     }
     
     public Grafo(int[][] mat){
+        Nodo.restartIdGen();
         this.nodos = new ConjuntoNodos(mat.length, false);
         this.aristas=new ConjuntoAristas(mat, nodos);
     }
@@ -63,12 +65,6 @@ public class Grafo {
 
     public ConjuntoAristas cloneAristas() throws CloneNotSupportedException {
         return aristas.clone();
-    }
-
-    public ConjuntoNodos getNodos() {
-        return nodos;
-    }
-    
-    
+    }     
     
 }

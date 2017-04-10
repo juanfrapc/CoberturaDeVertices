@@ -25,9 +25,10 @@ public class ConjuntoNodos implements Iterable<Nodo>{
     }
 
     public Nodo getNodo(int id) {
-        for (Nodo nodo : nodos) {
-            if (nodo.equals(new Nodo(id))) {
-                return nodo;
+        Nodo comp = new Nodo(id);
+        for (int i = 0; i < k; i++) {
+            if (nodos[i].equals(comp)) {
+                return nodos[i];
             }
         }
         return null;
@@ -55,9 +56,9 @@ public class ConjuntoNodos implements Iterable<Nodo>{
 
     @Override
     public ConjuntoNodos clone() throws CloneNotSupportedException {
-        ConjuntoNodos res = new ConjuntoNodos(this.nNodos(),false);
-        for (Nodo Nodo : nodos) {
-            res.añade(Nodo.clone());
+        ConjuntoNodos res = new ConjuntoNodos(this.nNodos(),true);
+        for (int i = 0; i < k; i++) {
+            res.añade(nodos[i].clone());
         }
         return res;
     }
@@ -109,8 +110,8 @@ public class ConjuntoNodos implements Iterable<Nodo>{
     }
 
     public boolean contiene(Nodo nodo) {
-        for (Nodo nodito : nodos) {
-            if (nodito.equals(nodo)) {
+        for (int i = 0; i < k; i++) {
+            if (nodos[i].equals(nodo)) {
                 return true;
             }
         }

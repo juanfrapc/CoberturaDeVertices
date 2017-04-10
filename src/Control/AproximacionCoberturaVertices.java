@@ -17,13 +17,9 @@ public class AproximacionCoberturaVertices {
         ConjuntoNodos solucion = new ConjuntoNodos(grafo.dimensiones()[0], true);
         ConjuntoAristas elegibles = grafo.cloneAristas();
         while (!elegibles.esVacio()) {
-            System.out.println("tamaño = "+ elegibles.nAristas());
             Arista a = elegir(elegibles);
-            System.out.println("arista random = " + a);
             solucion.añade(a.getOrigen());
-            System.out.println(a.getOrigen());
             solucion.añade(a.getDestino());
-            System.out.println(a.getDestino());
             eliminaIncidentes(a, elegibles);
         }
         return solucion;
@@ -40,10 +36,8 @@ public class AproximacionCoberturaVertices {
         while (it.hasNext()) {
             Arista arista = it.next();
             if (arista.getOrigen().equals(origen) || arista.getDestino().equals(origen)) {
-                System.out.println("1 " + arista);
                 it.remove();
             } else if (arista.getOrigen().equals(destino) || arista.getDestino().equals(destino)) {
-                System.out.println("2 " + arista);
                 it.remove();
             }
         }

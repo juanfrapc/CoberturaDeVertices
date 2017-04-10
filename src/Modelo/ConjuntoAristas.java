@@ -93,8 +93,8 @@ public final class ConjuntoAristas implements Iterable<Arista>, Cloneable {
     }
 
     public boolean contiene(Arista arista) {
-        for (Arista aristita : aristas) {
-            if (aristita.equals(arista)) {
+        for (int i = 0; i < k; i++) {
+            if (aristas[i].equals(arista)) {
                 return true;
             }
         }

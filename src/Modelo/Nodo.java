@@ -14,6 +14,10 @@ public class Nodo {
         this.id = id;
     }
 
+    public static void restartIdGen(){
+        idGenerator=1;
+    }
+    
     public int getGrado() {
         return grado;
     }
