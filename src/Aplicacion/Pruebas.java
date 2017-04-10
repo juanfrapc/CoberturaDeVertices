@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 
 public class Pruebas {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws CloneNotSupportedException {
 
         Scanner userInput = new Scanner(System.in);
         String command = "";
@@ -72,32 +72,42 @@ public class Pruebas {
                     break;
                 case "3": // Pruebas por defecto
                     System.out.println("\n---------------- Pruebas ----------------");
-                    System.out.println("-Prueba 1 - ");
+                    System.out.println("- Prueba 1 - ");
                     path = "EjemploGrafo.txt";
                     grafo = cargarGrafo(path);
-                    printer.print(grafo);
-                    int solEsperada = 3;
+                    int solOptima = 3;
                     try {
                         sol = resolverGrafo(grafo);
-                        printer.print(sol);
-                        comprueba(grafo, sol, solEsperada);
+                        comprueba(grafo, sol, solOptima);
                     } catch (Exception ex) {
                         System.out.println("Fallo: excepción no esperada");
-                        System.out.println(ex.getClass() + "\n");
-                        Logger.getLogger(Pruebas.class.getName()).log(Level.SEVERE, null, ex);
+                        System.out.println(ex.getMessage()+ "\n");
 
                     }
 
-//                    System.out.print("-Prueba 2 - ");
-//                    path = "EjemploGrafo2.txt";
-//                    grafo = cargarGrafo(path);
-//                    try {
-//                        sol = resolverGrafo(grafo);
-//                        comprueba(grafo, sol, solEsperada);
-//                    } catch (Exception ex) {
-//                        System.out.println("Fallo: excepción no esperada");
-//                        System.out.println(ex.getMessage() + "\n");
-//                    }
+                    System.out.println("- Prueba 2 - ");
+                    path = "EjemploGrafo2.txt";
+                    Grafo grafo2 = cargarGrafo(path);
+                    solOptima = 2;
+                    try {
+                        sol = resolverGrafo(grafo);
+                        comprueba(grafo2, sol, solOptima);
+                    } catch (Exception ex) {
+                        System.out.println("Fallo: excepción no esperada");
+                        System.out.println(ex.getMessage() + "\n");
+                    }
+                    
+                    System.out.println("- Prueba 3 - ");
+                     path = "EjemploGrafo3.txt";
+                    Grafo grafo3 = cargarGrafo(path);
+                    solOptima = 3;
+                    try {
+                        sol = resolverGrafo(grafo);
+                        comprueba(grafo3, sol, solOptima);
+                    } catch (Exception ex) {
+                        System.out.println("Fallo: excepción no esperada");
+                        System.out.println(ex.getMessage() + "\n");
+                    }
                     break;
                 case "q":
                     return;
@@ -122,7 +132,7 @@ public class Pruebas {
 
     private static ConjuntoNodos resolverGrafo(Grafo grafo) throws Exception {
         AproximacionCoberturaVertices resol = new AproximacionCoberturaVertices();
-        ConjuntoNodos sol = resol.resuelve(grafo, AproximacionCoberturaVertices.METODOALEATORIO);
+        ConjuntoNodos sol = resol.resuelve(grafo, AproximacionCoberturaVertices.METODOGRADO);
         return sol;
     }
 
@@ -139,7 +149,7 @@ public class Pruebas {
                 return;
             }
         }
-        System.out.println("\nÉxito\n");
+        System.out.println("Éxito\n");
     }
 
 }

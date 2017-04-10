@@ -11,17 +11,18 @@ public class Grafo {
         this.aristas = new ConjuntoAristas(tamaño * tamaño);
         this.nodos = new ConjuntoNodos(tamaño, true);
     }
-    
-    public Grafo(int[][] mat){
+
+    public Grafo(int[][] mat) {
         Nodo.restartIdGen();
         this.nodos = new ConjuntoNodos(mat.length, false);
-        this.aristas=new ConjuntoAristas(mat, nodos);
+        this.aristas = new ConjuntoAristas(mat, nodos);
     }
 
     public boolean añadeArista(Arista a) {
         if (this.aristas.añade(a)) {
-            a.getOrigen().cambiaGrado(true);
-            a.getDestino().cambiaGrado(true);
+            a.getOrigen().cambiaGrado(Nodo.INCREMENTA);
+            a.getDestino().cambiaGrado(Nodo.INCREMENTA);
+            nodos.marcarDesordenado();
             return true;
         }
         return false;
@@ -29,8 +30,8 @@ public class Grafo {
 
     public boolean quitarArista(Arista a) {
         if (this.aristas.eliminar(a)) {
-            a.getOrigen().cambiaGrado(false);
-            a.getDestino().cambiaGrado(false);
+            a.getOrigen().cambiaGrado(Nodo.DECREMENTA);
+            a.getDestino().cambiaGrado(Nodo.DECREMENTA);
             return true;
         }
         return false;
@@ -41,9 +42,9 @@ public class Grafo {
     }
 
     public boolean quitarNodo(Nodo n) {
-        if (this.nodos.eliminar(n)){
+        if (this.nodos.eliminar(n)) {
             Iterator<Arista> it = aristas.iterator();
-            while(it.hasNext()){
+            while (it.hasNext()) {
                 Arista arista = it.next();
                 if (arista.getOrigen().equals(n) || arista.getDestino().equals(n)) {
                     it.remove();
@@ -54,20 +55,19 @@ public class Grafo {
         return false;
     }
 
-    public int[] dimensiones(){
-        return new int[] {this.nodos.nNodos(), this.aristas.nAristas()};
+    public int[] dimensiones() {
+        return new int[]{this.nodos.nNodos(), this.aristas.nAristas()};
     }
-    
-    public Iterator<Arista> iteradorAristas(){
+
+    public Iterator<Arista> iteradorAristas() {
         return aristas.iterator();
     }
 
     public ConjuntoAristas cloneAristas() throws CloneNotSupportedException {
         return aristas.clone();
-    }     
+    }
 
     public ConjuntoNodos cloneNodos() throws CloneNotSupportedException {
         return nodos.clone();
     }
-    
 }

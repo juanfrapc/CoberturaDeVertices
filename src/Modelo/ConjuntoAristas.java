@@ -17,6 +17,8 @@ public final class ConjuntoAristas implements Iterable<Arista>, Cloneable {
             for (int j = 0; j < mat[i].length; j++) {
                 if (mat[i][j] > 0) {
                     this.añade(new Arista(nodos.getNodo(i + 1), nodos.getNodo(j + 1)));
+                    nodos.getNodo(i + 1).cambiaGrado(Nodo.INCREMENTA);
+                    nodos.getNodo(j + 1).cambiaGrado(Nodo.INCREMENTA);
                 }
             }
         }

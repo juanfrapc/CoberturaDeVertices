@@ -27,6 +27,7 @@ public class RadixSort {
             // Una iteracón por cada dígito.
             ordenaDígito(exp);
         }
+        conjunto.marcarOrdenado();
     }
 
     private int maximo() {
