@@ -46,6 +46,7 @@ public class GrafoPrinter implements GrafoDisplay {
         for (Nodo nodo : conjunto) {
             System.out.print(nodo + "\t");
         }
+        System.out.println("");
     }
 
 }

@@ -1,8 +1,6 @@
 package Aplicacion;
 
-import Modelo.ConjuntoNodos;
 import Modelo.Grafo;
-import Modelo.Nodo;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;

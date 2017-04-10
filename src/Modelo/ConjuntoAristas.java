@@ -2,7 +2,7 @@ package Modelo;
 
 import java.util.Iterator;
 
-public final class ConjuntoAristas implements Iterable<Arista>, Cloneable{
+public final class ConjuntoAristas implements Iterable<Arista>, Cloneable {
 
     private final Arista[] aristas;
     private int k = 0;
@@ -12,11 +12,11 @@ public final class ConjuntoAristas implements Iterable<Arista>, Cloneable{
     }
 
     ConjuntoAristas(int[][] mat, ConjuntoNodos nodos) {
-        this(mat.length*mat.length);
+        this(mat.length * mat.length);
         for (int i = 0; i < mat.length; i++) {
             for (int j = 0; j < mat[i].length; j++) {
-                if (mat[i][j]>0) {
-                    this.añade(new Arista(nodos.getNodo(i+1), nodos.getNodo(j+1)));
+                if (mat[i][j] > 0) {
+                    this.añade(new Arista(nodos.getNodo(i + 1), nodos.getNodo(j + 1)));
                 }
             }
         }
@@ -51,9 +51,9 @@ public final class ConjuntoAristas implements Iterable<Arista>, Cloneable{
     }
 
     @Override
-    public ConjuntoAristas clone() throws CloneNotSupportedException  {
+    public ConjuntoAristas clone() throws CloneNotSupportedException {
         ConjuntoAristas res = new ConjuntoAristas(this.nAristas());
-        for (int i = 0; i < k; i++) {            
+        for (int i = 0; i < k; i++) {
             res.añade(aristas[i].clone());
         }
         System.out.print("");
@@ -84,11 +84,11 @@ public final class ConjuntoAristas implements Iterable<Arista>, Cloneable{
     }
 
     public boolean esVacio() {
-        return k==0;
+        return k == 0;
     }
 
     public Arista getRandom() {
-        int i = (int) Math.round((k+1)*Math.random() - 0.5);
+        int i = (int) Math.round((k) * Math.random() - 0.5);
         return aristas[i];
     }
 
@@ -100,5 +100,5 @@ public final class ConjuntoAristas implements Iterable<Arista>, Cloneable{
         }
         return false;
     }
-    
+
 }

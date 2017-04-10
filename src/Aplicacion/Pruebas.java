@@ -84,9 +84,22 @@ public class Pruebas {
                     } catch (Exception ex) {
                         System.out.println("Fallo: excepción no esperada");
                         System.out.println(ex.getClass() + "\n");
-                        Logger.getLogger(Pruebas.class.getName()).log(Level.SEVERE, null, ex);
                     }
 
+                    System.out.println("\n---------------- Pruebas ----------------");
+                    System.out.print("-Prueba 1 - ");
+                    path = "EjemploGrafo.txt";
+                    grafo = cargarGrafo(path);
+                    printer.print(grafo);
+                    solEsperada = 3;
+                    try {
+                        sol = resolverGrafo(grafo);
+                        printer.print(sol);
+                        comprueba(grafo, sol, solEsperada);
+                    } catch (Exception ex) {
+                        System.out.println("Fallo: excepción no esperada");
+                        System.out.println(ex.getClass() + "\n");
+                    }
 //                    System.out.print("-Prueba 2 - ");
 //                    path = "EjemploGrafo2.txt";
 //                    grafo = cargarGrafo(path);
