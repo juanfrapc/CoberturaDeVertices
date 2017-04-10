@@ -1,6 +1,6 @@
 package Modelo;
 
-public class Nodo {
+public class Nodo implements Comparable<Nodo>{
 
     private final int id;
     private static int idGenerator = 1;
@@ -46,6 +46,11 @@ public class Nodo {
     @Override
     public String toString() {
         return "" + id;
+    }
+
+    @Override
+    public int compareTo(Nodo o) {
+        return this.grado - o.grado;
     }
 
 }

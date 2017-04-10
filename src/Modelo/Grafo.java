@@ -65,5 +65,9 @@ public class Grafo {
     public ConjuntoAristas cloneAristas() throws CloneNotSupportedException {
         return aristas.clone();
     }     
+
+    public ConjuntoNodos cloneNodos() throws CloneNotSupportedException {
+        return nodos.clone();
+    }
     
 }

@@ -6,6 +6,7 @@ public class ConjuntoNodos implements Iterable<Nodo>{
 
     private final Nodo[] nodos;
     private int k = 0;
+    private boolean ordenado = false;
 
     public ConjuntoNodos(int n, boolean vacio) {
         this.nodos = new Nodo[n];
@@ -33,9 +34,25 @@ public class ConjuntoNodos implements Iterable<Nodo>{
         }
         return null;
     }
+    
+    public Nodo getMaxNodo() {
+        return ordenado? nodos[0]:null;
+    }
+    
+    public Nodo[] getNodos() {
+        return nodos;
+    }
 
     public int nNodos() {
         return k;
+    }
+    
+    public void marcarOrdenado() {
+        ordenado = true;
+    }
+    
+    public void marcarDesordenado() {
+        ordenado = false;
     }
 
     public boolean eliminar(Nodo nodo) {
@@ -117,7 +134,4 @@ public class ConjuntoNodos implements Iterable<Nodo>{
         }
         return false;
     }
-
-    
-    
 }

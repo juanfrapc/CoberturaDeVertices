@@ -122,7 +122,7 @@ public class Pruebas {
 
     private static ConjuntoNodos resolverGrafo(Grafo grafo) throws Exception {
         AproximacionCoberturaVertices resol = new AproximacionCoberturaVertices();
-        ConjuntoNodos sol = resol.resuelve(grafo);
+        ConjuntoNodos sol = resol.resuelve(grafo, AproximacionCoberturaVertices.METODOALEATORIO);
         return sol;
     }
 
