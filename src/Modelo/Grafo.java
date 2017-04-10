@@ -8,7 +8,6 @@ public class Grafo {
     private final ConjuntoNodos nodos;
 
     public Grafo(int tamaño) {
-        Nodo.restartIdGen();
         this.aristas = new ConjuntoAristas(tamaño * tamaño);
         this.nodos = new ConjuntoNodos(tamaño, true);
     }

@@ -72,7 +72,7 @@ public class Pruebas {
                     break;
                 case "3": // Pruebas por defecto
                     System.out.println("\n---------------- Pruebas ----------------");
-                    System.out.print("-Prueba 1 - ");
+                    System.out.println("-Prueba 1 - ");
                     path = "EjemploGrafo.txt";
                     grafo = cargarGrafo(path);
                     printer.print(grafo);
