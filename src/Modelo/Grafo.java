@@ -70,4 +70,16 @@ public class Grafo {
     public ConjuntoNodos cloneNodos() throws CloneNotSupportedException {
         return nodos.clone();
     }
+    
+    public void restaurarGrados() {
+        for (Nodo nodo : nodos) {
+            while (nodo.getGrado() != 0) {
+                nodo.cambiaGrado(Nodo.DECREMENTA);
+            }
+        }
+        for (Arista arista : aristas) {
+            arista.getOrigen().cambiaGrado(Nodo.INCREMENTA);
+            arista.getDestino().cambiaGrado(Nodo.INCREMENTA);
+        }
+    }
 }

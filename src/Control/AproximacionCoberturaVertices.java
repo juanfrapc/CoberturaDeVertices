@@ -25,7 +25,6 @@ public class AproximacionCoberturaVertices {
                 new RadixSort().ordena(candidatos); 
                 while (!elegibles.esVacio()) {
                     Arista a = elegir(elegibles, candidatos);
-                    System.out.println(a.getOrigen() + " Grado = " + a.getOrigen().getGrado() + " " + a.getDestino() + " Grado = " + a.getDestino().getGrado());
                     candidatos.eliminar(a.getOrigen());
                     candidatos.eliminar(a.getDestino());
                     añadeCandidatos(a, solucion);
@@ -34,12 +33,12 @@ public class AproximacionCoberturaVertices {
             default:
                 while (!elegibles.esVacio()) {
                     Arista a = elegir(elegibles);
-                    System.out.println(a.getOrigen() + " Grado = " + a.getOrigen().getGrado() + " " + a.getDestino() + " Grado = " + a.getDestino().getGrado());
                     añadeCandidatos(a, solucion);
                     eliminaIncidentes(a, elegibles);
                 }
                 break;
-        };
+        }
+        grafo.restaurarGrados();
         return solucion;
     }
 
@@ -49,9 +48,7 @@ public class AproximacionCoberturaVertices {
 
     private Arista elegir(ConjuntoAristas aristas, ConjuntoNodos nodos) {
         Nodo nodoMax = nodos.getMaxNodo();
-        System.out.println(nodoMax);
         for (Arista arista : aristas) {
-            System.out.println(arista.getOrigen() + " " + arista.getDestino());
             if (arista.getOrigen().equals(nodoMax) || arista.getDestino().equals(nodoMax)) {
                 return arista;
             }

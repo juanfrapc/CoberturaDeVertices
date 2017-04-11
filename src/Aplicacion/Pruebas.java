@@ -90,7 +90,7 @@ public class Pruebas {
                     Grafo grafo2 = cargarGrafo(path);
                     solOptima = 2;
                     try {
-                        sol = resolverGrafo(grafo);
+                        sol = resolverGrafo(grafo2);
                         comprueba(grafo2, sol, solOptima);
                     } catch (Exception ex) {
                         System.out.println("Fallo: excepción no esperada");
@@ -102,7 +102,7 @@ public class Pruebas {
                     Grafo grafo3 = cargarGrafo(path);
                     solOptima = 3;
                     try {
-                        sol = resolverGrafo(grafo);
+                        sol = resolverGrafo(grafo3);
                         comprueba(grafo3, sol, solOptima);
                     } catch (Exception ex) {
                         System.out.println("Fallo: excepción no esperada");
