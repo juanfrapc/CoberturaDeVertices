@@ -6,11 +6,16 @@ import Modelo.ConjuntoNodos;
 import Modelo.Grafo;
 import java.util.Iterator;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class Pruebas {
 
+    /**
+     * @author Juan Francisco Pérez Caballero && Gabriel García Buey
+     * @param args
+     * @throws CloneNotSupportedException
+     */
+    private static int algoritmo = AproximacionCoberturaVertices.METODOALEATORIO;
+    
     public static void main(String[] args) throws CloneNotSupportedException {
 
         Scanner userInput = new Scanner(System.in);
@@ -21,6 +26,15 @@ public class Pruebas {
             System.out.println("1. Introducir grafo mediante fichero de texto");
             System.out.println("2. Introducir grafo por consola [Matriz de adyacencia]");
             System.out.println("3. Ejecutar pruebas");
+            System.out.print("4. Cambiar algoritmo empleado [Alg. Actual: ");
+            switch (algoritmo) {
+                case AproximacionCoberturaVertices.METODOGRADO:
+                    System.out.print("Selección por nodo de mayor grado");
+                    break;
+                default:
+                    System.out.print("Selección de arista aleatoria");
+            }
+            System.out.println("]");
             System.out.println("[Pulse la tecla 'Q' para salir]");
             System.out.print("Comando a ejecutar: ");
             // Menú
@@ -109,6 +123,16 @@ public class Pruebas {
                         System.out.println(ex.getMessage() + "\n");
                     }
                     break;
+                case "4": 
+                    switch (algoritmo) {
+                        case AproximacionCoberturaVertices.METODOGRADO:
+                            algoritmo = AproximacionCoberturaVertices.METODOALEATORIO;
+                            break;
+                        default:
+                            algoritmo = AproximacionCoberturaVertices.METODOGRADO;
+                            break;
+                    }
+                    break;
                 case "q":
                     return;
                 case "Q":
@@ -132,7 +156,7 @@ public class Pruebas {
 
     private static ConjuntoNodos resolverGrafo(Grafo grafo) throws Exception {
         AproximacionCoberturaVertices resol = new AproximacionCoberturaVertices();
-        ConjuntoNodos sol = resol.resuelve(grafo, AproximacionCoberturaVertices.METODOGRADO);
+        ConjuntoNodos sol = resol.resuelve(grafo, algoritmo);
         return sol;
     }
 

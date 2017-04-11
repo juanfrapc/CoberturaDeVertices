@@ -16,6 +16,14 @@ public class AproximacionCoberturaVertices {
         return "Algoritmos de aproximación para la cobertura de vértices";
     }
 
+    /**
+     *  Método que resuelve el conjunto de cobertura de vértices usando dos 
+     *  algoritmos de aproximación.
+     * @param grafo - Grafo a resolver
+     * @param metodo - selecciona el algoritmo a utilizar
+     * @return - ConjuntodeNodos cobertura resultante
+     * @throws CloneNotSupportedException
+     */
     public ConjuntoNodos resuelve(Grafo grafo, int metodo) throws CloneNotSupportedException {
         ConjuntoNodos solucion = new ConjuntoNodos(grafo.dimensiones()[0], true);
         ConjuntoAristas elegibles = grafo.cloneAristas();

@@ -17,7 +17,10 @@ public class RadixSort {
         return "Radix Sort";
     }
 
-
+    /**
+     *  Método de ordenación que emplea el algoritmo RadixSort
+     * @param conjunto - ConjuntoNodos a ordenar
+     */
     public void ordena(ConjuntoNodos conjunto) {
         this.nodos = conjunto.getNodos();
         this.nNodos = conjunto.nNodos();
